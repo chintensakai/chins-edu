@@ -1,7 +1,7 @@
-package com.chins.edu.service.teacher.mapper;
+package org.chins.edu.service.teacher.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.chins.edu.service.teacher.entity.EduTeacher;
+import org.chins.edu.service.teacher.entity.EduTeacher;
 
 /**
  * <p>

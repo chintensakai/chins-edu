@@ -1,9 +1,9 @@
-package com.chins.edu.service.teacher.service.impl;
+package org.chins.edu.service.teacher.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.chins.edu.service.teacher.entity.EduTeacher;
-import com.chins.edu.service.teacher.mapper.EduTeacherMapper;
-import com.chins.edu.service.teacher.service.IEduTeacherService;
+import org.chins.edu.service.teacher.entity.EduTeacher;
+import org.chins.edu.service.teacher.mapper.EduTeacherMapper;
+import org.chins.edu.service.teacher.service.IEduTeacherService;
 import org.springframework.stereotype.Service;
 
 /**

@@ -1,4 +1,4 @@
-package com.chins.edu.service.teacher;
+package org.chins.edu.service.teacher;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

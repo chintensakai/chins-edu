@@ -1,4 +1,4 @@
-package com.chins.edu.service.teacher.entity;
+package org.chins.edu.service.teacher.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

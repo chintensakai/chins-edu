@@ -1,8 +1,9 @@
-package com.chins.edu.service.teacher.controller;
+package org.chins.edu.service.teacher.controller;
 
 
-import com.chins.edu.service.teacher.entity.EduTeacher;
-import com.chins.edu.service.teacher.service.IEduTeacherService;
+import org.chins.edu.common.utils.Result;
+import org.chins.edu.service.teacher.entity.EduTeacher;
+import org.chins.edu.service.teacher.service.IEduTeacherService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,12 +29,13 @@ public class EduTeacherController {
   private IEduTeacherService teacherService;
 
   @GetMapping("/get-all-teacher")
-  public List<EduTeacher> getAllTeacher() {
-    return teacherService.list();
+  public Result getAllTeacher() {
+    return Result.success().data("items", teacherService.list());
   }
 
   @DeleteMapping("{id}")
-  public boolean deleteTeacherById(@PathVariable String id) {
-    return teacherService.removeById(id);
+  public Result deleteTeacherById(@PathVariable String id) {
+    boolean remove = teacherService.removeById(id);
+    return remove ? Result.success().success(remove) : Result.error().success(remove);
   }
 }
