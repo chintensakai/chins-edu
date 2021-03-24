@@ -1,7 +1,7 @@
 package com.chins.edu.service.teacher.service;
 
-import com.chins.edu.service.teacher.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.chins.edu.service.teacher.entity.EduTeacher;
 
 /**
  * <p>

@@ -5,7 +5,9 @@ import com.chins.edu.service.teacher.entity.EduTeacher;
 import com.chins.edu.service.teacher.service.IEduTeacherService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -26,8 +28,12 @@ public class EduTeacherController {
   private IEduTeacherService teacherService;
 
   @GetMapping("/get-all-teacher")
-  public Object getAllTeacher() {
-    List<EduTeacher> list = teacherService.list();
-    return list;
+  public List<EduTeacher> getAllTeacher() {
+    return teacherService.list();
+  }
+
+  @DeleteMapping("{id}")
+  public boolean deleteTeacherById(@PathVariable String id) {
+    return teacherService.removeById(id);
   }
 }
