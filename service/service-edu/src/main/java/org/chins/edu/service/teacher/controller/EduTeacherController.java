@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,8 +53,20 @@ public class EduTeacherController {
 
   @PostMapping("/add-teacher")
   public Result addTeacher(@RequestBody EduTeacher teacher) {
-    System.out.println("-------------- " + teacher);
     boolean save = teacherService.save(teacher);
     return save ? Result.success().success(Boolean.TRUE) : Result.error().success(Boolean.FALSE);
+  }
+
+  @GetMapping("/teacher/{id}")
+  public Result getTeacherById(@PathVariable String id) {
+    EduTeacher teacher = teacherService.getById(id);
+    return Result.success().success(Boolean.TRUE).data("teacher", teacher);
+  }
+
+  @PutMapping("/teacher/{id}")
+  public Result updateTeacher(@PathVariable String id, @RequestBody EduTeacher teacher) {
+    teacher.setId(id);
+    boolean b = teacherService.updateById(teacher);
+    return b ? Result.success().success(Boolean.TRUE) : Result.error().success(Boolean.FALSE);
   }
 }
