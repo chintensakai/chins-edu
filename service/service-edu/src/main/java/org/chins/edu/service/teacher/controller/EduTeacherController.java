@@ -49,4 +49,11 @@ public class EduTeacherController {
     return Result.success().data("total", teacherByCondition.getTotal())
         .data("items", teacherByCondition.getRecords());
   }
+
+  @PostMapping("/add-teacher")
+  public Result addTeacher(@RequestBody EduTeacher teacher) {
+    System.out.println("-------------- " + teacher);
+    boolean save = teacherService.save(teacher);
+    return save ? Result.success().success(Boolean.TRUE) : Result.error().success(Boolean.FALSE);
+  }
 }
