@@ -1,10 +1,14 @@
 package org.chins.edu.service.teacher.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.chins.edu.service.teacher.entity.EduTeacher;
+import org.chins.edu.service.teacher.entity.TeacherVo;
 import org.chins.edu.service.teacher.mapper.EduTeacherMapper;
 import org.chins.edu.service.teacher.service.IEduTeacherService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 /**
  * <p>
@@ -18,4 +22,23 @@ import org.springframework.stereotype.Service;
 public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeacher> implements
     IEduTeacherService {
 
+  @Override
+  public Page<EduTeacher> findTeacherByCondition(TeacherVo teacherVo) {
+    Page<EduTeacher> page = new Page<>(teacherVo.getCurrent(), teacherVo.getSize());
+    QueryWrapper<EduTeacher> wrapper = new QueryWrapper();
+    if (!StringUtils.isEmpty(teacherVo.getName())) {
+      wrapper.like("name", teacherVo.getName());
+    }
+    if (!StringUtils.isEmpty(teacherVo.getLevel())) {
+      wrapper.eq("level", teacherVo.getLevel());
+    }
+    if (!StringUtils.isEmpty(teacherVo.getBegin())) {
+      wrapper.ge("gmt_create", teacherVo.getBegin());
+    }
+    if (!StringUtils.isEmpty((teacherVo.getEnd()))) {
+      wrapper.le("gmt_create", teacherVo.getEnd());
+    }
+
+    return page(page, wrapper);
+  }
 }

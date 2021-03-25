@@ -1,14 +1,12 @@
 package org.chins.edu.service.teacher.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.chins.edu.common.utils.Result;
 import org.chins.edu.service.teacher.entity.EduTeacher;
 import org.chins.edu.service.teacher.entity.TeacherVo;
 import org.chins.edu.service.teacher.service.IEduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,23 +44,9 @@ public class EduTeacherController {
   //  分页 & 条件查询
   @PostMapping("/find-teacher")
   public Result findTeacher(@RequestBody TeacherVo teacherVo) {
-    Page<EduTeacher> page = new Page<>(teacherVo.getCurrent(), teacherVo.getSize());
-    QueryWrapper<EduTeacher> wrapper = new QueryWrapper();
-    if (!StringUtils.isEmpty(teacherVo.getName())) {
-      wrapper.like("name", teacherVo.getName());
-    }
-    if (!StringUtils.isEmpty(teacherVo.getLevel())) {
-      wrapper.eq("level", teacherVo.getLevel());
-    }
-    if (!StringUtils.isEmpty(teacherVo.getBegin())) {
-      wrapper.ge("gmt_create", teacherVo.getBegin());
-    }
-    if (!StringUtils.isEmpty((teacherVo.getEnd()))) {
-      wrapper.le("gmt_create", teacherVo.getEnd());
-    }
 
-    Page<EduTeacher> teacherPage = teacherService.page(page, wrapper);
-    return Result.success().data("total", teacherPage.getTotal())
-        .data("items", teacherPage.getRecords());
+    Page<EduTeacher> teacherByCondition = teacherService.findTeacherByCondition(teacherVo);
+    return Result.success().data("total", teacherByCondition.getTotal())
+        .data("items", teacherByCondition.getRecords());
   }
 }
