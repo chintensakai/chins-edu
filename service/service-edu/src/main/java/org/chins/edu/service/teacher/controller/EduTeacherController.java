@@ -7,6 +7,7 @@ import org.chins.edu.service.teacher.entity.EduTeacher;
 import org.chins.edu.service.teacher.entity.TeacherVo;
 import org.chins.edu.service.teacher.service.IEduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,14 +27,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/service.teacher/edu-teacher")
+@CrossOrigin
 public class EduTeacherController {
 
   @Autowired
   private IEduTeacherService teacherService;
 
-  @GetMapping("/get-all-teacher")
-  public Result getAllTeacher() {
-    return Result.success().data("items", teacherService.list());
+  @GetMapping("/get-all-teacher-page/{current}/{size}")
+  public Result getAllTeacher(@PathVariable int current, @PathVariable int size) {
+    TeacherVo teacherVo = new TeacherVo();
+    teacherVo.setSize(size);
+    teacherVo.setCurrent(current);
+    return Result.success().data("items", teacherService.findTeacherByCondition(teacherVo));
   }
 
   @DeleteMapping("{id}")
