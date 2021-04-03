@@ -18,14 +18,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <properties>
-    <java.version>1.8</java.version>
-    <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
-    <mysql.version>8.0.22</mysql.version>
-    <mybatis-plus.version>3.4.1</mybatis-plus.version>
-    <lombok.version>1.18.16</lombok.version>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -53,8 +45,23 @@
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
       </dependency>
+
+      <dependency>
+        <artifactId>aliyun-sdk-oss</artifactId>
+        <groupId>com.aliyun.oss</groupId>
+        <version>${aliyun-sdk-oss.version}</version>
+      </dependency>
     </dependencies>
 
   </dependencyManagement>
+
+  <properties>
+    <aliyun-sdk-oss.version>3.10.2</aliyun-sdk-oss.version>
+    <java.version>1.8</java.version>
+    <lombok.version>1.18.16</lombok.version>
+    <mybatis-plus.version>3.4.1</mybatis-plus.version>
+    <mysql.version>8.0.22</mysql.version>
+    <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+  </properties>
 
 </project>

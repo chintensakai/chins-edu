@@ -1,0 +1,14 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: service-oss
+
+aliyun:
+  oss:
+    file:
+      bucketname: chins-edu-bucket
+      endpoint: oss-cn-beijing.aliyuncs.com
+      keyid: AAAAAAAAAA
+      keysecret: BBBBBBBBBBB
