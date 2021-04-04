@@ -1,7 +1,9 @@
 package org.chins.edu.service.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
 import org.chins.edu.service.entity.EduSubject;
+import org.chins.edu.service.entity.subject.ParentSubjectVo;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -15,4 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface IEduSubjectService extends IService<EduSubject> {
 
   void saveSubject(MultipartFile file);
+
+  List<ParentSubjectVo> getAllSubjectsTree();
 }

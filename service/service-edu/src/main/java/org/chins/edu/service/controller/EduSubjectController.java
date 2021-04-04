@@ -1,10 +1,13 @@
 package org.chins.edu.service.controller;
 
 
+import java.util.List;
 import org.chins.edu.common.utils.Result;
+import org.chins.edu.service.entity.subject.ParentSubjectVo;
 import org.chins.edu.service.service.IEduSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,5 +33,11 @@ public class EduSubjectController {
   public Result addSubject(MultipartFile file) {
     subjectService.saveSubject(file);
     return Result.success();
+  }
+
+  @GetMapping("/all-subjects")
+  public Result getAllSubjects() {
+    List<ParentSubjectVo> allSubjectsTree = subjectService.getAllSubjectsTree();
+    return Result.success().data("data", allSubjectsTree);
   }
 }
