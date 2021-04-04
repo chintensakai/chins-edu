@@ -1,4 +1,4 @@
-package org.chins.edu.service.teacher.entity;
+package org.chins.edu.service.entity;
 
 import lombok.Data;
 

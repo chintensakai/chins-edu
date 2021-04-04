@@ -1,4 +1,4 @@
-package org.chins.edu.service.teacher.config;
+package org.chins.edu.service.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("org.chins.edu.service.teacher.mapper")
+@MapperScan("org.chins.edu.service.mapper")
 public class EduTeacherConfig {
 
   // 逻辑删除插件新版本已不需要配置

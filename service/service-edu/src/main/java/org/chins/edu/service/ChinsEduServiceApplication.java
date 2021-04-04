@@ -1,12 +1,12 @@
-package org.chins.edu.service.teacher;
+package org.chins.edu.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChinsEduServiceTeacherApplication {
+public class ChinsEduServiceApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ChinsEduServiceTeacherApplication.class, args);
+    SpringApplication.run(ChinsEduServiceApplication.class, args);
   }
 }

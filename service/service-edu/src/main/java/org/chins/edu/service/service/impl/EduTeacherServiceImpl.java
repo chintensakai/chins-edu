@@ -1,12 +1,12 @@
-package org.chins.edu.service.teacher.service.impl;
+package org.chins.edu.service.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.chins.edu.service.teacher.entity.EduTeacher;
-import org.chins.edu.service.teacher.entity.TeacherVo;
-import org.chins.edu.service.teacher.mapper.EduTeacherMapper;
-import org.chins.edu.service.teacher.service.IEduTeacherService;
+import org.chins.edu.service.entity.EduTeacher;
+import org.chins.edu.service.entity.TeacherVo;
+import org.chins.edu.service.mapper.EduTeacherMapper;
+import org.chins.edu.service.service.IEduTeacherService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

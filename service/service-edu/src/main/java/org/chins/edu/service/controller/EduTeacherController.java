@@ -1,11 +1,11 @@
-package org.chins.edu.service.teacher.controller;
+package org.chins.edu.service.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.chins.edu.common.utils.Result;
-import org.chins.edu.service.teacher.entity.EduTeacher;
-import org.chins.edu.service.teacher.entity.TeacherVo;
-import org.chins.edu.service.teacher.service.IEduTeacherService;
+import org.chins.edu.service.entity.EduTeacher;
+import org.chins.edu.service.entity.TeacherVo;
+import org.chins.edu.service.service.IEduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
