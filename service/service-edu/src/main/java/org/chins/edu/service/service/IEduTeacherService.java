@@ -3,7 +3,7 @@ package org.chins.edu.service.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.chins.edu.service.entity.EduTeacher;
-import org.chins.edu.service.entity.TeacherVo;
+import org.chins.edu.service.entity.vo.TeacherVo;
 
 /**
  * <p>

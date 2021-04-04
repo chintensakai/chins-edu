@@ -4,7 +4,7 @@ package org.chins.edu.service.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.chins.edu.common.utils.Result;
 import org.chins.edu.service.entity.EduTeacher;
-import org.chins.edu.service.entity.TeacherVo;
+import org.chins.edu.service.entity.vo.TeacherVo;
 import org.chins.edu.service.service.IEduTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,7 +41,7 @@ public class EduTeacherController {
     return Result.success().data("items", teacherService.findTeacherByCondition(teacherVo));
   }
 
-  @DeleteMapping("{id}")
+  @DeleteMapping("/{id}")
   public Result deleteTeacherById(@PathVariable String id) {
     boolean remove = teacherService.removeById(id);
     return remove ? Result.success().success(remove) : Result.error().success(remove);
