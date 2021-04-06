@@ -38,6 +38,6 @@ public class EduSubjectController {
   @GetMapping("/all-subjects")
   public Result getAllSubjects() {
     List<ParentSubjectVo> allSubjectsTree = subjectService.getAllSubjectsTree();
-    return Result.success().data("data", allSubjectsTree);
+    return Result.success().data("subjects", allSubjectsTree);
   }
 }

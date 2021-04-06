@@ -14,5 +14,5 @@ import org.chins.edu.service.entity.vo.CourseInfoVo;
  */
 public interface IEduCourseService extends IService<EduCourse> {
 
-  void saveCourse(CourseInfoVo infoVo);
+  String saveCourse(CourseInfoVo infoVo);
 }

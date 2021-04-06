@@ -5,6 +5,7 @@ import org.chins.edu.common.utils.Result;
 import org.chins.edu.service.entity.vo.CourseInfoVo;
 import org.chins.edu.service.service.IEduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/service.course/edu-course")
+@CrossOrigin
 public class EduCourseController {
 
   @Autowired
@@ -27,7 +29,7 @@ public class EduCourseController {
 
   @PostMapping("/add-course")
   public Result addCourse(@RequestBody CourseInfoVo infoVo) {
-    courseService.saveCourse(infoVo);
-    return Result.success();
+    String courseId = courseService.saveCourse(infoVo);
+    return Result.success().data("courseId", courseId);
   }
 }

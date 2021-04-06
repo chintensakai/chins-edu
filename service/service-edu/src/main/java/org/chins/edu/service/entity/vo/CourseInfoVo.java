@@ -9,6 +9,7 @@ public class CourseInfoVo {
   private String id;
   private String teacherId;
   private String subjectId;
+  private String subjectParentId;
   private String title;
   //  课程价格 精确度高一点
   private BigDecimal price;

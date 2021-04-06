@@ -31,7 +31,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
   @SneakyThrows
   @Override
-  public void saveCourse(CourseInfoVo infoVo) {
+  public String saveCourse(CourseInfoVo infoVo) {
 //    1. 课程表添加课程
 //    可以使用BeanUtils.copyProperties();
     EduCourse eduCourse = EduCourse.builder().id(infoVo.getId())
@@ -51,5 +51,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     courseDescriptionMapper
         .insert(EduCourseDescription.builder()
             .id(eduCourse.getId()).description(infoVo.getDescription()).build());
+    return eduCourse.getId();
+
+//    to-do 回滚机制
   }
 }

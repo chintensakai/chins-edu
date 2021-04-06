@@ -35,6 +35,9 @@ public class EduTeacherController {
 
   @GetMapping("/get-all-teacher-page/{current}/{size}")
   public Result getAllTeacher(@PathVariable int current, @PathVariable int size) {
+    if (current == 0 && size == 0) {
+      return Result.success().data("items", teacherService.list());
+    }
     TeacherVo teacherVo = new TeacherVo();
     teacherVo.setSize(size);
     teacherVo.setCurrent(current);
