@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.SneakyThrows;
 import org.chins.edu.service.entity.EduCourse;
 import org.chins.edu.service.entity.EduCourseDescription;
-import org.chins.edu.service.entity.vo.CourseInfoVo;
+import org.chins.edu.service.entity.course.CourseInfoVo;
 import org.chins.edu.service.mapper.EduCourseDescriptionMapper;
 import org.chins.edu.service.mapper.EduCourseMapper;
 import org.chins.edu.service.service.IEduCourseService;
@@ -54,5 +54,36 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     return eduCourse.getId();
 
 //    to-do 回滚机制
+  }
+
+  @Override
+  public CourseInfoVo getCourseInfoById(String courseId) {
+    EduCourse course = courseMapper.selectById(courseId);
+//    description和course是同一个id
+    EduCourseDescription description = courseDescriptionMapper.selectById(courseId);
+    return CourseInfoVo.builder().id(courseId).cover(course.getCover())
+        .description(description.getDescription())
+        .lessonNum(course.getLessonNum())
+        .subjectId(course.getSubjectId())
+        .price(course.getPrice())
+        .title(course.getTitle())
+        .teacherId(course.getTeacherId())
+        .subjectParentId(course.getSubjectParentId()).build();
+  }
+
+  @Override
+  public void updateCourseInfo(CourseInfoVo courseInfoVo) {
+//    使用beanutils好像更方便
+    courseMapper.updateById(EduCourse.builder().id(courseInfoVo.getId())
+        .cover(courseInfoVo.getCover())
+        .lessonNum(courseInfoVo.getLessonNum())
+        .price(courseInfoVo.getPrice())
+        .title(courseInfoVo.getTitle())
+        .subjectId(courseInfoVo.getSubjectId())
+        .teacherId(courseInfoVo.getTeacherId())
+        .subjectParentId(courseInfoVo.getSubjectParentId()).build());
+
+    courseDescriptionMapper.updateById(EduCourseDescription.builder().id(courseInfoVo.getId())
+        .description(courseInfoVo.getDescription()).build());
   }
 }

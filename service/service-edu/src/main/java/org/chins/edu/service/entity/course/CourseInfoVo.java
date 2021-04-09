@@ -1,9 +1,11 @@
-package org.chins.edu.service.entity.vo;
+package org.chins.edu.service.entity.course;
 
 import java.math.BigDecimal;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class CourseInfoVo {
 
   private String id;

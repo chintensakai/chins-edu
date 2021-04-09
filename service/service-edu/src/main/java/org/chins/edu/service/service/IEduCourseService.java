@@ -2,7 +2,7 @@ package org.chins.edu.service.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.chins.edu.service.entity.EduCourse;
-import org.chins.edu.service.entity.vo.CourseInfoVo;
+import org.chins.edu.service.entity.course.CourseInfoVo;
 
 /**
  * <p>
@@ -15,4 +15,8 @@ import org.chins.edu.service.entity.vo.CourseInfoVo;
 public interface IEduCourseService extends IService<EduCourse> {
 
   String saveCourse(CourseInfoVo infoVo);
+
+  CourseInfoVo getCourseInfoById(String courseId);
+
+  void updateCourseInfo(CourseInfoVo courseInfoVo);
 }

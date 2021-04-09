@@ -14,7 +14,7 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>org.chins</groupId>
-  <artifactId>chins-edu</artifactId>
+  <artifactId>chins-edu-backend</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
