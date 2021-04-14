@@ -18,4 +18,10 @@ public class GlobalExceptionHandler {
 
 //  自定义异常 - 创建自定义异常类xxException extentd RuntimeException
 //  再ExceptionHandler(自定义异常.class)
+@ExceptionHandler(EduException.class)
+@ResponseBody
+public Result error(EduException e) {
+  System.out.println("========================== " + e);
+  return Result.error().data("msg", e.getMessage());
+}
 }

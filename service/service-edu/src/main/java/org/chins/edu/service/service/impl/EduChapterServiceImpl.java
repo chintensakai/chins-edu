@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.chins.edu.common.utils.EduException;
 import org.chins.edu.service.entity.EduChapter;
 import org.chins.edu.service.entity.EduVideo;
 import org.chins.edu.service.entity.course.ChapterVo;
@@ -43,6 +44,21 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
             .title(c.getTitle())
             .videos(getChapterVideos(c.getId(), c.getCourseId())).build()
     ).collect(Collectors.toList());
+  }
+
+  @Override
+  public void removeChapterAndVideoById(String chapterId) throws EduException {
+    QueryWrapper<EduVideo> videoWrapper = new QueryWrapper<>();
+    videoWrapper.eq("chapter_id", chapterId);
+//    现在不需要查询出小节的信息，只需要知道他有没有小节
+//    List<EduVideo> eduVideos = videoMapper.selectList(videoWrapper);
+    int cnt = videoMapper.selectCount(videoWrapper);
+    if (cnt > 0) {
+//      有小节，不允许删除
+      throw new EduException(40000, "不允许删除");
+    } else {
+      videoMapper.delete(videoWrapper);
+    }
   }
 
   private List<VideoVo> getChapterVideos(String chapterId, String courseId) {

@@ -42,7 +42,7 @@ public class EduCourseController {
     return Result.success().data("courseInfo", courseInfo);
   }
 
-  @PutMapping("update-course-info")
+  @PutMapping("/update-course-info")
   public Result updateCourseInfo(@RequestBody CourseInfoVo courseInfoVo) {
     courseService.updateCourseInfo(courseInfoVo);
     return Result.success();

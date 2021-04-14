@@ -40,6 +40,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         .price(infoVo.getPrice())
         .title(infoVo.getTitle())
         .subjectId(infoVo.getSubjectId())
+        .subjectParentId(infoVo.getSubjectParentId())
         .teacherId(infoVo.getTeacherId()).build();
     int insert = courseMapper.insert(eduCourse);
 
