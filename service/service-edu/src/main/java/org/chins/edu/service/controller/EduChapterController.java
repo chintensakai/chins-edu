@@ -57,4 +57,10 @@ public class EduChapterController {
     chapterService.removeChapterAndVideoById(chapterId);
     return Result.success();
   }
+
+  @GetMapping("/chapter/{chapterId}")
+  public Result getChapterById(@PathVariable String chapterId) throws EduException {
+    EduChapter chapter = chapterService.getById(chapterId);
+    return Result.success().data("chapter", chapter);
+  }
 }

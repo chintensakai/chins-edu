@@ -57,7 +57,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
 //      有小节，不允许删除
       throw new EduException(40000, "不允许删除");
     } else {
-      videoMapper.delete(videoWrapper);
+      chapterMapper.deleteById(chapterId);
     }
   }
 
