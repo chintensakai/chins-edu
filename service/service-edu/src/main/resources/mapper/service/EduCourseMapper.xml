@@ -3,4 +3,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.chins.edu.service.mapper.EduCourseMapper">
 
+  <select id="getPublishCourseInfo"
+    resultType="org.chins.edu.service.entity.course.CoursePublishVo">
+    SELECT EC.ID, EC.TITLE, EC.COVER, ECD.DESCRIPTION, EC.PRICE, EC.LESSON_NUM AS LESSONNUM,
+    ET.NAME AS TEACHERNAME,
+    ES1.TITLE AS PARENTSUBJECTNAME,
+    ES2.TITLE AS SUBSUBJECTNAME
+    FROM edu_course EC
+    LEFT JOIN edu_course_description ECD ON EC.ID = ECD.ID
+    LEFT JOIN edu_teacher ET ON EC.TEACHER_ID = ET.ID
+    LEFT JOIN edu_subject ES1 ON EC.SUBJECT_PARENT_ID = ES1.ID
+    LEFT JOIN edu_subject ES2 ON EC.SUBJECT_ID = ES2.ID
+    WHERE EC.ID = #{COURSEID}
+  </select>
 </mapper>

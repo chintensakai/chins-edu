@@ -1,12 +1,16 @@
 package org.chins.edu.service.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.SneakyThrows;
 import org.chins.edu.service.entity.EduCourse;
 import org.chins.edu.service.entity.EduCourseDescription;
 import org.chins.edu.service.entity.course.CourseInfoVo;
+import org.chins.edu.service.entity.course.CoursePublishVo;
+import org.chins.edu.service.mapper.EduChapterMapper;
 import org.chins.edu.service.mapper.EduCourseDescriptionMapper;
 import org.chins.edu.service.mapper.EduCourseMapper;
+import org.chins.edu.service.mapper.EduVideoMapper;
 import org.chins.edu.service.service.IEduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +29,12 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
   @Autowired
   private EduCourseMapper courseMapper;
+
+  @Autowired
+  private EduVideoMapper videoMapper;
+
+  @Autowired
+  private EduChapterMapper chapterMapper;
 
   @Autowired
   private EduCourseDescriptionMapper courseDescriptionMapper;
@@ -86,5 +96,29 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     courseDescriptionMapper.updateById(EduCourseDescription.builder().id(courseInfoVo.getId())
         .description(courseInfoVo.getDescription()).build());
+  }
+
+  @Override
+  public CoursePublishVo publishCourseInfo(String courseId) {
+    return courseMapper.getPublishCourseInfo(courseId);
+  }
+
+  @Override
+  public void removeCourse(String courseId) {
+//    1. 删除小节
+    QueryWrapper videoWrapper = new QueryWrapper();
+    videoWrapper.eq("course_id", courseId);
+    videoMapper.delete(videoWrapper);
+
+//    2. 删除章节
+    QueryWrapper chapterWrapper = new QueryWrapper();
+    chapterWrapper.eq("course_id", courseId);
+    chapterMapper.delete(chapterWrapper);
+
+//    3. 删除描述
+    courseDescriptionMapper.deleteById(courseId);
+
+//    4. 删除课程本身
+    courseMapper.deleteById(courseId);
   }
 }

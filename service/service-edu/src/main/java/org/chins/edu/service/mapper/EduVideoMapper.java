@@ -12,5 +12,4 @@ import org.chins.edu.service.entity.EduVideo;
  * @since 2021-04-04
  */
 public interface EduVideoMapper extends BaseMapper<EduVideo> {
-
 }
