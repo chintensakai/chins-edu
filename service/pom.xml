@@ -12,7 +12,6 @@
   <modules>
     <module>service-edu</module>
     <module>service-oss</module>
-    <module>service-video</module>
   </modules>
 
   <artifactId>service</artifactId>
