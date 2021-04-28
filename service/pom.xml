@@ -23,20 +23,20 @@
   </properties>
 
   <dependencies>
-<!--    <dependency>-->
-<!--      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--      <groupId>com.alibaba.cloud</groupId>-->
-<!--    </dependency>-->
+    <dependency>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+      <groupId>com.alibaba.cloud</groupId>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.cloud</groupId>-->
-<!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-<!--    </dependency>-->
+    <dependency>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <groupId>org.springframework.cloud</groupId>
+    </dependency>
 
     <dependency>
       <groupId>com.baomidou</groupId>

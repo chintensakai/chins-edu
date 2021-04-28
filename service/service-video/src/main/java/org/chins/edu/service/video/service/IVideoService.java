@@ -5,4 +5,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface IVideoService {
 
   String uploadVideoToOss(MultipartFile file);
+
+  void removeVideoById(String videoId);
 }

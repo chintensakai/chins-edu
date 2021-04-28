@@ -1,22 +1,38 @@
 package org.chins.edu.service.video.service.impl;
 
+import com.aliyun.oss.ClientException;
 import com.aliyun.vod.upload.impl.UploadVideoImpl;
 import com.aliyun.vod.upload.req.UploadVideoRequest;
 import com.aliyun.vod.upload.resp.UploadVideoResponse;
 import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
+import com.aliyuncs.vod.model.v20170321.DeleteVideoResponse;
 import java.io.File;
 import java.io.IOException;
 import org.chins.edu.service.video.service.IVideoService;
 import org.chins.edu.service.video.utils.VodConstantUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class VideoServiceImpl implements IVideoService {
 
-  @Autowired
-  private DefaultAcsClient vodClient;
+  public static DefaultAcsClient initVodClient(String accessKeyId, String accessKeySecret)
+      throws ClientException {
+    String regionId = "cn-shanghai";  // 点播服务接入区域
+    DefaultProfile profile = DefaultProfile.getProfile(regionId, accessKeyId, accessKeySecret);
+    DefaultAcsClient client = new DefaultAcsClient(profile);
+    return client;
+  }
+
+  private static DeleteVideoResponse deleteVideo(DefaultAcsClient client, String videoId)
+      throws Exception {
+    DeleteVideoRequest request = new DeleteVideoRequest();
+    //支持传入多个视频ID，多个用逗号分隔
+    request.setVideoIds(videoId);
+    return client.getAcsResponse(request);
+  }
 
   @Override
   public String uploadVideoToOss(MultipartFile file) {
@@ -54,5 +70,19 @@ public class VideoServiceImpl implements IVideoService {
     }
 
     return response.getVideoId();
+  }
+
+  @Override
+  public void removeVideoById(String videoId) {
+    DefaultAcsClient client = initVodClient(VodConstantUtils.KEY_ID,
+        VodConstantUtils.KEY_SECRET);
+
+    DeleteVideoResponse response = new DeleteVideoResponse();
+    try {
+      response = deleteVideo(client, videoId);
+    } catch (Exception e) {
+      System.out.print("ErrorMessage = " + e.getLocalizedMessage());
+    }
+    System.out.print("RequestId = " + response.getRequestId() + "\n");
   }
 }

@@ -26,6 +26,12 @@
     </dependency>
 
     <dependency>
+      <artifactId>common</artifactId>
+      <groupId>org.chins</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
       <artifactId>aliyun-java-vod-upload</artifactId>
       <groupId>com.aliyun</groupId>
       <scope>system</scope>
