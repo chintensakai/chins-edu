@@ -1,6 +1,7 @@
 package org.chins.edu.service.controller;
 
 
+import java.util.List;
 import org.chins.edu.common.utils.Result;
 import org.chins.edu.service.entity.EduCourse;
 import org.chins.edu.service.entity.course.CourseInfoVo;
@@ -70,5 +71,12 @@ public class EduCourseController {
     return Result.success();
   }
 
+  @GetMapping("/hot-courses")
+  public Result getHotCourses() {
+
+    List<EduCourse> list = courseService.geHotCourses();
+
+    return Result.success().data("hostCourses", list);
+  }
 
 }

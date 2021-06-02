@@ -1,6 +1,7 @@
 package org.chins.edu.service.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
 import org.chins.edu.service.entity.EduCourse;
 import org.chins.edu.service.entity.course.CourseInfoVo;
 import org.chins.edu.service.entity.course.CoursePublishVo;
@@ -24,4 +25,6 @@ public interface IEduCourseService extends IService<EduCourse> {
   CoursePublishVo publishCourseInfo(String courseId);
 
   void removeCourse(String courseId);
+
+  List<EduCourse> geHotCourses();
 }

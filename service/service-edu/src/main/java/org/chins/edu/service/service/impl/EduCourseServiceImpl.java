@@ -2,6 +2,7 @@ package org.chins.edu.service.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.util.List;
 import lombok.SneakyThrows;
 import org.chins.edu.service.entity.EduCourse;
 import org.chins.edu.service.entity.EduCourseDescription;
@@ -13,6 +14,7 @@ import org.chins.edu.service.mapper.EduCourseMapper;
 import org.chins.edu.service.mapper.EduVideoMapper;
 import org.chins.edu.service.service.IEduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -120,5 +122,19 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
 //    4. 删除课程本身
     courseMapper.deleteById(courseId);
+  }
+
+  /***
+   * 获取首页热门课程
+   *
+   * @return
+   */
+  @Cacheable(value = "hotCourses", key = "'key'")  // hotCourses::key
+  @Override
+  public List<EduCourse> geHotCourses() {
+    QueryWrapper<EduCourse> wrapper = new QueryWrapper<>();
+    wrapper.orderByDesc("buy_count");
+    wrapper.last("limit 4");
+    return courseMapper.selectList(wrapper);
   }
 }
