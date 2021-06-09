@@ -58,6 +58,17 @@
         <version>${com.alibaba.easyexcel.version}</version>
       </dependency>
 
+      <dependency>
+        <artifactId>commons-pool2</artifactId>
+        <groupId>org.apache.commons</groupId>
+        <version>${org.apache.commons.commons-pool2.version}</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>jjwt</artifactId>
+        <groupId>io.jsonwebtoken</groupId>
+        <version>${io.jsonwebtoken.jjwt.version}</version>
+      </dependency>
     </dependencies>
 
   </dependencyManagement>
@@ -70,6 +81,8 @@
     <mysql.version>8.0.22</mysql.version>
     <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
     <com.alibaba.easyexcel.version>2.2.8</com.alibaba.easyexcel.version>
+    <io.jsonwebtoken.jjwt.version>0.9.1</io.jsonwebtoken.jjwt.version>
+    <org.apache.commons.commons-pool2.version>2.6.0</org.apache.commons.commons-pool2.version>
   </properties>
 
 </project>

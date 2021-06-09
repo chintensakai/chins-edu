@@ -36,7 +36,12 @@
     <dependency>
       <artifactId>commons-pool2</artifactId>
       <groupId>org.apache.commons</groupId>
-      <version>2.6.0</version>
     </dependency>
+
+    <dependency>
+      <artifactId>jjwt</artifactId>
+      <groupId>io.jsonwebtoken</groupId>
+    </dependency>
+
   </dependencies>
 </project>
