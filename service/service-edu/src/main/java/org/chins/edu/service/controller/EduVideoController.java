@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-04-04
  */
 @RestController
-@RequestMapping("/service.video/edu-video")
+@RequestMapping("/eduservice/edu-video")
 @CrossOrigin
 public class EduVideoController {
 

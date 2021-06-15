@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-06-07
  */
 @RestController
-@RequestMapping("/service/edu-ucenter")
+@RequestMapping("/eduucenter/edu-ucenter")
 @CrossOrigin
 public class EduUcenterController {
 
@@ -40,7 +40,7 @@ public class EduUcenterController {
     } catch (EduException e) {
       return Result.error();
     }
-    return Result.success().data("Subject-Token", loginToken);
+    return Result.success().data("Authorization", loginToken);
   }
 
   @GetMapping("/getUserInfo")

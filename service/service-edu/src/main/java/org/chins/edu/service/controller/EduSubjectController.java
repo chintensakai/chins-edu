@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @since 2021-04-04
  */
 @RestController
-@RequestMapping("/service.subject/edu-subject")
+@RequestMapping("/eduservice/edu-subject")
 @CrossOrigin
 public class EduSubjectController {
 

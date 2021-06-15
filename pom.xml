@@ -3,21 +3,6 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <modules>
-    <module>service</module>
-    <module>common</module>
-  </modules>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.7.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
-  <groupId>org.chins</groupId>
-  <artifactId>chins-edu-backend</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -26,6 +11,14 @@
         <scope>import</scope>
         <type>pom</type>
         <version>2.2.3.RELEASE</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <groupId>org.springframework.cloud</groupId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>Hoxton.RELEASE</version>
       </dependency>
 
       <dependency>
@@ -69,9 +62,36 @@
         <groupId>io.jsonwebtoken</groupId>
         <version>${io.jsonwebtoken.jjwt.version}</version>
       </dependency>
+
+      <dependency>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+        <groupId>org.springframework.cloud</groupId>
+      </dependency>
+
+      <dependency>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+        <groupId>org.springframework.cloud</groupId>
+        <version>${spring-cloud-starter-gateway.version}</version>
+      </dependency>
     </dependencies>
 
   </dependencyManagement>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.3.7.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>org.chins</groupId>
+  <artifactId>chins-edu-backend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>service</module>
+    <module>common</module>
+    <module>infrastructure</module>
+  </modules>
 
   <properties>
     <aliyun-sdk-oss.version>3.10.2</aliyun-sdk-oss.version>
@@ -83,6 +103,7 @@
     <com.alibaba.easyexcel.version>2.2.8</com.alibaba.easyexcel.version>
     <io.jsonwebtoken.jjwt.version>0.9.1</io.jsonwebtoken.jjwt.version>
     <org.apache.commons.commons-pool2.version>2.6.0</org.apache.commons.commons-pool2.version>
+    <spring-cloud-starter-gateway.version>3.0.3</spring-cloud-starter-gateway.version>
   </properties>
 
 </project>

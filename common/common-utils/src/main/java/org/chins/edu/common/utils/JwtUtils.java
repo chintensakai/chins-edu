@@ -61,7 +61,7 @@ public class JwtUtils {
    */
   public static boolean checkToken(HttpServletRequest request) {
     try {
-      String jwtToken = request.getHeader("X-Auth-Token");
+      String jwtToken = request.getHeader("Authorization");
       if (StringUtils.isEmpty(jwtToken)) {
         return false;
       }
@@ -80,7 +80,7 @@ public class JwtUtils {
    * @return
    */
   public static String getMemberIdByJwtToken(HttpServletRequest request) {
-    String jwtToken = request.getHeader("X-Auth-Token");
+    String jwtToken = request.getHeader("Authorization");
     if (StringUtils.isEmpty(jwtToken)) {
       return "";
     }

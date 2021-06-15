@@ -45,8 +45,6 @@ public class EduUcenterServiceImpl extends ServiceImpl<EduUcenterMapper, EduUcen
     if (null == eduUcenter || !password.equals(eduUcenter.getPassword())) {
       throw new EduException(40001, "Login Failed.");
     }
-    System.out.println(password);
-    System.out.println(eduUcenter.getPassword());
     return JwtUtils.genJwtToken(eduUcenter.getId(), eduUcenter.getNickname());
   }
 }
