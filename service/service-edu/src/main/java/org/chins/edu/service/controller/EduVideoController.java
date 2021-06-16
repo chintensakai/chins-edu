@@ -5,7 +5,6 @@ import org.chins.edu.common.utils.Result;
 import org.chins.edu.service.entity.EduVideo;
 import org.chins.edu.service.service.IEduVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/eduservice/edu-video")
-@CrossOrigin
 public class EduVideoController {
 
   @Autowired

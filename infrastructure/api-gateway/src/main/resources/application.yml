@@ -1,5 +1,5 @@
 server:
-  port: 8800
+  port: 8809
 
 spring:
   application:
@@ -13,15 +13,26 @@ spring:
       discovery:
         locator:
           enabled: true
-      routes[0]:
-        id: service-edu
-        uri: lb://service-edu
-        predicates: Path=/eduservice/**
+      routes:
+        - id: service-edu
+          uri: lb://service-edu
+          predicates:
+            - Path=/eduservice/**
 
-      routes[1]:
-        id: service-ucenter
-        uri: lb://service-ucenter
-        predicates: Path=/eduucenter/**
+        - id: service-ucenter
+          uri: lb://service-ucenter
+          predicates:
+            - Path=/eduucenter/**
+
+        - id: service-oss
+          uri: lb://service-oss
+          predicates:
+            - Path=/ossservice/**
+
+        - id: service-video
+          uri: lb://service-video
+          predicates:
+            - Path=/videoservice/**
 
 
 #  datasource:

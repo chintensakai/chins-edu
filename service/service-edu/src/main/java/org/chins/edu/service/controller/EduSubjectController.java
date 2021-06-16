@@ -6,7 +6,6 @@ import org.chins.edu.common.utils.Result;
 import org.chins.edu.service.entity.subject.ParentSubjectVo;
 import org.chins.edu.service.service.IEduSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 @RequestMapping("/eduservice/edu-subject")
-@CrossOrigin
 public class EduSubjectController {
 
   @Autowired

@@ -3,15 +3,13 @@ package org.chins.edu.service.oss.controller;
 import org.chins.edu.common.utils.Result;
 import org.chins.edu.service.oss.service.OssService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/service.oss")
-@CrossOrigin
+@RequestMapping("/ossservice")
 public class OssController {
 
   @Autowired

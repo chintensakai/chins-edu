@@ -8,6 +8,12 @@
       <artifactId>common-utils</artifactId>
       <groupId>org.chins</groupId>
       <version>0.0.1-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>spring-boot-starter-web</artifactId>
+          <groupId>org.springframework.boot</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>

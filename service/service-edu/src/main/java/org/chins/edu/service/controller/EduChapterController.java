@@ -8,7 +8,6 @@ import org.chins.edu.service.entity.EduChapter;
 import org.chins.edu.service.entity.course.ChapterVo;
 import org.chins.edu.service.service.IEduChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/eduservice/edu-chapter")
-@CrossOrigin
 public class EduChapterController {
 
   @Autowired

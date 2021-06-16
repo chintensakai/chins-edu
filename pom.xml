@@ -103,7 +103,7 @@
     <com.alibaba.easyexcel.version>2.2.8</com.alibaba.easyexcel.version>
     <io.jsonwebtoken.jjwt.version>0.9.1</io.jsonwebtoken.jjwt.version>
     <org.apache.commons.commons-pool2.version>2.6.0</org.apache.commons.commons-pool2.version>
-    <spring-cloud-starter-gateway.version>3.0.3</spring-cloud-starter-gateway.version>
+    <spring-cloud-starter-gateway.version>2.2.8.RELEASE</spring-cloud-starter-gateway.version>
   </properties>
 
 </project>
