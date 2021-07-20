@@ -1,6 +1,7 @@
 package org.chins.edu.common.utils;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -32,6 +33,33 @@ public class JwtUtils {
         .signWith(SignatureAlgorithm.HS256, APP_SECRET)
         .compact();
     return JwtToken;
+  }
+
+  /***
+   * 生成token
+   * @param username
+   * @return
+   */
+  public static String genJwtToken(String username) {
+    String JwtToken = Jwts.builder()
+        .setSubject(username)
+        .setIssuedAt(new Date())
+        .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
+        .signWith(SignatureAlgorithm.HS256, APP_SECRET)
+        .compressWith(CompressionCodecs.GZIP)
+        .compact();
+    return JwtToken;
+  }
+
+  /***
+   * 获取用户名
+   * @param token
+   * @return
+   */
+  public static String getUserFromToken(String token) {
+    String user = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(token)
+        .getBody().getSubject();
+    return user;
   }
 
   /**
